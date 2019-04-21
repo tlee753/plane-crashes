@@ -1,22 +1,59 @@
 <html>
-    <head>
-        <title>Airplane Crashes</title>
-        <link rel="stylesheet" href="styles.css"/>
-        <script src="d3.v4.min.js"></script>
-        <script src="main.js"></script>
-    </head>
-    <body>
-        <div id="header">
-            <h1>Airplane Crashes</h1>
+
+<head>
+    <title>Airplane Crashes</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="d3.v4.min.js"></script>
+    <script src="geojson.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div id="header" onclick="scrollView()">
+        <h1 class="warning">AIRPLANE CRASHES</h1>
+    </div>
+
+    <div id="content">
+        <!-- MAP -->
+        <div class="quadrant" id="map">
+            <div id="map-legend"></div>
+            <div id="tooltip" class="hidden"></div>
+        </div>
+        <div class="quadrant" id="map-text">
+            <h2 class="warning">Where do crashes happen?</h2>
+            <p>Crashes predominanety happen in the wealthier countries with the United States being an extreme outlier.</p>
         </div>
 
-        <svg id="map"></svg>
-        <svg id="bubbles"></svg>
-        <svg id="bars"></svg>
-        <svg id="bubbles"></svg>
-
-        <div id="footer">
-            <p>Copyright Tyler Lee</p>
+        <!-- BUBBLES -->
+        <div class="quadrant" id="bubbles">
+            <div id="bubbles-legend"></div>
+            <div id="bubbles-tooltip" class="hidden"></div>
         </div>
-    </body>
+        <div class="quadrant" id="bubbles-text">
+            <h2 class="warning">Who makes crashes happen?</h2>
+            <p>Boeing. Boeing makes crashes happen.</p>
+        </div>
+
+        <!-- BARS -->
+        <div class="quadrant" id="bars"></div>
+        <div class="quadrant" id="bars-text">
+            <h2 class="warning">When do crashes happen?</h2>
+            <p>This is some placeholder text for the bars.</p>
+        </div>
+
+        <!-- FATAL -->
+        <div class="quadrant" id="fatal"></div>
+        <div class="quadrant" id="fatal-text">
+            <h2 class="warning">Do people die when crashes happen?</h2>
+            <p>This is some placeholder text for the fatal.</p>
+        </div>
+
+    </div>
+
+    <div id="footer" onclick="scrollView()">
+        <p class="warning">Copyright Tyler Lee</p>
+    </div>
+</body>
+
 </html>

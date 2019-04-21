@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Electrolize|Maven+Pro');
+body {
+    font-family: "Electrolize";
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    font-size: 150px;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#header {
+    background-color: black;
+    height: 200px;
+    overflow: hidden;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 4fr 6fr 4fr 1fr;
+    grid-template-rows: 720px 1000px 360px 360px 360px;
+    grid-template-areas: ". map map map-text ." ". bubbles-text bubbles bubbles ." ". bars bars bars ." ". bars-text bars-text bars-text ." ". fatal fatal fatal-text .";
+}
+
+#footer {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    height: 400px;
+}
+
+.warning {
+    background: -webkit-linear-gradient(#FF0B0C, #FFF500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.quadrant {
+    border: 0px solid red;
+}
+
+#map {
+    position: relative;
+    grid-area: map;
+}
+
+#map-text {
+    grid-area: map-text;
+    padding: 10px;
+}
+
+#bubbles {
+    position: relative;
+    grid-area: bubbles;
+}
+
+#bubbles-text {
+    grid-area: bubbles-text;
+    padding: 10px;
+}
+
+#bars {
+    grid-area: bars;
+}
+
+#bars-text {
+    grid-area: bars-text;
+    padding: 10px;
+}
+
+#fatal {
+    grid-area: fatal;
+}
+
+#fatal-text {
+    grid-area: fatal-text;
+    padding: 10px;
+}
+
+#tooltip {
+    z-index: 10;
+    color: white;
+    position: absolute;
+    background: black;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+#bubbles-tooltip {
+    z-index: 10;
+    color: white;
+    position: absolute;
+    right: 20px;
+    background: black;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+#map-legend {
+    position: absolute;
+    top: 180px;
+    left: 20px;
+    width: 100px;
+    height: 400px;
+}
+#bubbles-legend {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+.hidden {
+    display: none;
+}
