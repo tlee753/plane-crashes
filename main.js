@@ -184,7 +184,7 @@ d3.csv("aircraft_incidents.csv", function (csv) {
 
     var simulation = d3.forceSimulation()
         .nodes(nodes)
-        .force("center", d3.forceCenter(600, 500))
+        .force("center", d3.forceCenter(600, 400))
         .force("collide", forceCollide)
         .force("link", d3.forceLink().id(function (d) { return d.cluster }))
         .force("charge", d3.forceManyBody())
