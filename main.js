@@ -30,7 +30,36 @@ d3.csv("aircraft_incidents.csv", function (csv) {
         })
         .entries(csv);
 
-    console.log(bubblesData);
+    var pie1Data = d3.nest()
+        .key(function (d) {
+            return d.Injury_Severity;
+        })
+        .rollup(function (leaves) {
+            return leaves.length;
+        })
+        .object(csv);
+
+    var pie2Data = d3.nest()
+        .key(function (d) {
+            return d.Aircraft_Damage;
+        })
+        .rollup(function (leaves) {
+            return leaves.length;
+        })
+        .object(csv);
+
+    var pie3Data = d3.nest()
+        .key(function (d) {
+            return d.Schedule;
+        })
+        .rollup(function (leaves) {
+            return leaves.length;
+        })
+        .object(csv);
+
+    console.log(pie1Data);
+    console.log(pie2Data);
+    console.log(pie3Data);
 
     // COLOR & LABELS
     var mapDataMin = d3.min(d3.values(mapData));
