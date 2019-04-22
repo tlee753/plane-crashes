@@ -306,17 +306,196 @@ d3.csv("aircraft_incidents.csv", function (csv) {
             .classed("hidden", true);
     }
 
-    // BARS
-    var bars = d3.select("#bars")
-        .append("svg")
-        .attr("width", 1560)
-        .attr("height", 360)
-        .append("g");
-
     // FATAL
     var fatal = d3.select("#fatal")
         .append("svg")
-        .attr("width", 360)
-        .attr("height", 360)
-        .append("g");
+        .attr("width", 500)
+        .attr("height", 500)
+        .append("g")
+        .attr("transform", "translate(" + 550 / 2 + "," + 550 / 2 + ")");
+
+    var pie1 = d3.pie()
+        .value(function (d) {
+            return d.value;
+        });
+
+    var pie1Ready = pie1(d3.entries(pie1Data));
+
+    fatal.selectAll("g")
+        .data(pie1Ready)
+        .enter()
+        .append("path")
+        .attr('d', d3.arc()
+            .innerRadius(100)
+            .outerRadius(200)
+        )
+        .attr("fill", function (d) {
+            var fatalName = d["data"]["key"];
+            if (fatalName == "FatalS") {
+                return colors[5];
+            } else if (fatalName == "FatalD") {
+                return colors[7];
+            } else if (fatalName == "FatalT") {
+                return colors[9];
+            } else if (fatalName == "Incident") {
+                return colors[1];
+            } else if (fatalName == "Non-Fatal") {
+                return colors[3];
+            } else if (fatalName == "Unavailable") {
+                return colors[0];
+            } else {
+                return "pink";
+            };
+        })
+        .attr("stroke", "white")
+        .on("mouseover", fatalMouseOver)
+        .on("mouseout", fatalMouseOut);
+
+    // FATAL TOOLTIP
+    function fatalMouseOver(d) {
+        var fatalName = d["data"]["key"];
+        if (fatalName == "FatalS") {
+            fatalName = "Single Digit Fatalities";
+        } else if (fatalName == "FatalD") {
+            fatalName = "Double Digit Fatalities";
+        } else if (fatalName == "FatalT") {
+            fatalName = "Triple Digit Fatalities";
+        }
+        d3.select("#fatal-tooltip")
+            .classed("hidden", false)
+            .style("left", 20 + "px")
+            .style("top", 20 + "px")
+            .html(fatalName + "</br>" + d.value + " people");
+    }
+
+    function fatalMouseOut(d) {
+        d3.select("#fatal-tooltip")
+            .classed("hidden", true);
+    }
+
+    // DAMAGE
+    var fatal = d3.select("#damage")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500)
+        .append("g")
+        .attr("transform", "translate(" + 550 / 2 + "," + 550 / 2 + ")");
+
+    var pie2 = d3.pie()
+        .value(function (d) {
+            return d.value;
+        });
+
+    var pie2Ready = pie2(d3.entries(pie2Data));
+
+    fatal.selectAll("g")
+        .data(pie2Ready)
+        .enter()
+        .append("path")
+        .attr('d', d3.arc()
+            .innerRadius(100)
+            .outerRadius(200)
+        )
+        .attr("fill", function (d) {
+            var damageName = d["data"]["key"];
+            if (damageName == "Destroyed") {
+                return colors[9];
+            } else if (damageName == "Substantial") {
+                return colors[7];
+            } else if (damageName == "Minor") {
+                return colors[1];
+            } else if (damageName == "") {
+                return colors[0];
+            } else {
+                return "pink";
+            };
+        })
+        .attr("stroke", "white")
+        .on("mouseover", damageMouseOver)
+        .on("mouseout", damageMouseOut);
+
+    // DAMAGE TOOLTIP
+    function damageMouseOver(d) {
+        var damageName = d["data"]["key"];
+        if (damageName == "") {
+            damageName = "Unavailable";
+        }
+        d3.select("#damage-tooltip")
+            .classed("hidden", false)
+            .style("left", 20 + "px")
+            .style("top", 20 + "px")
+            .html(damageName + "</br>" + d.value + " planes");
+    }
+
+    function damageMouseOut(d) {
+        d3.select("#damage-tooltip")
+            .classed("hidden", true);
+    }
+
+    // SCHEDULE
+    var fatal = d3.select("#schedule")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500)
+        .append("g")
+        .attr("transform", "translate(" + 550 / 2 + "," + 550 / 2 + ")");
+
+    var pie3 = d3.pie()
+        .value(function (d) {
+            return d.value;
+        });
+
+    var pie3Ready = pie3(d3.entries(pie3Data));
+
+    fatal.selectAll("g")
+        .data(pie3Ready)
+        .enter()
+        .append("path")
+        .attr('d', d3.arc()
+            .innerRadius(100)
+            .outerRadius(200)
+        )
+        .attr("fill", function (d) {
+            var scheduleName = d["data"]["key"];
+            if (scheduleName == "") {
+                return colors[0];
+            } else if (scheduleName == "SCHD") {
+                return colors[1];
+            } else if (scheduleName == "NSCH") {
+                return colors[5];
+            } else if (scheduleName == "UNK") {
+                return colors[9];
+            } else {
+                return "pink";
+            };
+        })
+        .attr("stroke", "white")
+        .on("mouseover", scheduleMouseOver)
+        .on("mouseout", scheduleMouseOut);
+
+    // SCHEDULE TOOLTIP
+    function scheduleMouseOver(d) {
+        var scheduleName = d["data"]["key"];
+        if (scheduleName == "") {
+            scheduleName = "Unavailable";
+        } else if (scheduleName == "SCHD") {
+            scheduleName = "Scheduled";
+        } else if (scheduleName == "NSCH") {
+            scheduleName = "Not Scheduled";
+        } else if (scheduleName == "UNK") {
+            scheduleName = "Unknown";
+        }
+        d3.select("#schedule-tooltip")
+            .classed("hidden", false)
+            .style("left", 20 + "px")
+            .style("top", 20 + "px")
+            .html(scheduleName + "</br>" + d.value + " flights");
+    }
+
+    function scheduleMouseOut(d) {
+        d3.select("#schedule-tooltip")
+            .classed("hidden", true);
+    }
+
+
 });

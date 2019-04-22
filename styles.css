@@ -26,9 +26,9 @@ h2 {
 
 #content {
     display: grid;
-    grid-template-columns: 0.5fr 4fr 6fr 4fr 0.5fr;
-    grid-template-rows: 720px 1000px 360px 360px 360px;
-    grid-template-areas: ". map map map-text ." ". bubbles-text bubbles bubbles ." ". bars bars bars ." ". bars-text bars-text bars-text ." ". fatal fatal fatal-text .";
+    grid-template-columns: 0.5fr 4fr 4fr 2fr 2fr 2fr 0.5fr;
+    grid-template-rows: 720px 1000px 500px 400px;
+    grid-template-areas: ". map map map map-text map-text ." ". bubbles-text bubbles bubbles bubbles bubbles ." ". fatal damage schedule schedule . ." ". fatal-text fatal-text fatal-text fatal-text fatal-text .";
 }
 
 #footer {
@@ -68,22 +68,45 @@ h2 {
     padding: 10px;
 }
 
-#bars {
-    grid-area: bars;
-}
-
-#bars-text {
-    grid-area: bars-text;
-    padding: 10px;
-}
-
 #fatal {
+    position: relative;
     grid-area: fatal;
+}
+
+#damage {
+    position: relative;
+    grid-area: damage;
+}
+
+#schedule {
+    position: relative;
+    grid-area: schedule;
 }
 
 #fatal-text {
     grid-area: fatal-text;
     padding: 10px;
+}
+
+#fatal-label {
+    position: absolute;
+    color: white;
+    top: 265px;
+    left: 242px;
+}
+
+#damage-label {
+    position: absolute;
+    color: white;
+    top: 265px;
+    left: 223px;
+}
+
+#schedule-label {
+    position: absolute;
+    color: white;
+    top: 265px;
+    left: 240px;
 }
 
 #tooltip {
@@ -105,6 +128,36 @@ h2 {
     border: 1px solid white;
 }
 
+#fatal-tooltip {
+    z-index: 10;
+    color: white;
+    position: absolute;
+    left: 20px;
+    background: black;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+#damage-tooltip {
+    z-index: 10;
+    color: white;
+    position: absolute;
+    left: 20px;
+    background: black;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+#schedule-tooltip {
+    z-index: 10;
+    color: white;
+    position: absolute;
+    left: 20px;
+    background: black;
+    padding: 10px;
+    border: 1px solid white;
+}
+
 #map-legend {
     position: absolute;
     top: 180px;
@@ -112,6 +165,7 @@ h2 {
     width: 100px;
     height: 400px;
 }
+
 #bubbles-legend {
     position: absolute;
     top: 20px;

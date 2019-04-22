@@ -22,7 +22,7 @@
         </div>
         <div class="quadrant" id="map-text">
             <h2 class="warning">Where do crashes happen?</h2>
-            <p>Crashes predominanety happen in the wealthier countries with the United States being an extreme outlier.</p>
+            <p>Crashes predominanetly happen in wealthier countries with the United States being an extreme outlier.</p>
         </div>
 
         <!-- BUBBLES -->
@@ -35,17 +35,21 @@
             <p>Boeing. Boeing makes crashes happen.</p>
         </div>
 
-        <!-- BARS -->
-        <div class="quadrant" id="bars"></div>
-        <div class="quadrant" id="bars-text">
-            <h2 class="warning">When do crashes happen?</h2>
-            <p>This is some placeholder text for the bars.</p>
-        </div>
-
         <!-- FATAL -->
-        <div class="quadrant" id="fatal"></div>
+        <div class="quadrant" id="fatal">
+            <div id="fatal-tooltip" class="hidden"></div>
+            <div id="fatal-label">Fatalities</div>
+        </div>
+        <div class="quadrant" id="damage">
+            <div id="damage-tooltip" class="hidden"></div>
+            <div id="damage-label">Plane Damage</div>
+        </div>
+        <div class="quadrant" id="schedule">
+            <div id="schedule-tooltip" class="hidden"></div>
+            <div id="schedule-label">Scheduled</div>
+        </div>
         <div class="quadrant" id="fatal-text">
-            <h2 class="warning">Do people die when crashes happen?</h2>
+            <h2 class="warning">Will the crash kill you? The plane? Should you even book a flight?</h2>
             <p>This is some placeholder text for the fatal.</p>
         </div>
 
